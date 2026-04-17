@@ -1,0 +1,9 @@
+﻿# Ignore local runtime/editor artifacts
+.omx/
+.superpowers/
+output/
+.obsidian/
+.DS_Store
+Thumbs.db
+*.tmp
+*.bak
