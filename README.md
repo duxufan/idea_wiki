@@ -1,178 +1,224 @@
-﻿# idea-wiki
+﻿[English](./README.md) | [简体中文](./README.zh.md)
 
-> 一个把 **想法生成、研究调研、知识沉淀、认知对齐** 放进同一闭环里的工作流仓库。💡
+# idea-wiki
 
-`idea-wiki` 不是普通的知识库，也不是单纯的灵感收集箱。  
-它要解决的是一个更具体的问题：**人脑里刚出现的想法，怎样一步步变成可以研究、可以校正、可以积累的东西。**
+> An idea-driven research workflow for turning personal intuition into structured inquiry, aligned research, and durable knowledge. 💡
 
-很多时候，我们并不缺资料，也不缺灵感。真正缺的是一条持续闭环：
+`idea-wiki` is not just a note repository, and it is not just an idea dump.
+It is a workflow for a more specific problem:
 
-> 从一个模糊想法出发，经过结构化、调研、比对、修正和沉淀，最后让自己的理解逐步与现有工作对齐。
+> **How do you take a vague idea in your head, turn it into something researchable, compare it against existing work, and gradually align your own understanding with what is already known?**
 
----
-
-## 💡 为什么要把想法和学习放在一起
-
-单纯做知识管理，常见的问题是：你会积累很多材料、很多笔记、很多总结，但它们不一定真的在推进你的问题。  
-你知道了很多东西，却不一定更接近自己真正想研究的方向。
-
-单纯记录想法，也有另一种问题：你会有很多直觉、很多设想、很多“感觉这里可能有东西”，但这些想法如果没有持续学习和外部研究来校正，很容易停留在主观判断里。
-
-于是就出现了两种断裂：
-
-- **只有知识，没有主线**：学了很多，但没有形成自己的研究推进。📚
-- **只有想法，没有校正**：想了很多，但不知道它和现有工作之间的距离。🤔
-
-`idea-wiki` 要做的，就是把这两件事接起来：
-
-- 让 **idea 驱动学习**，而不是无方向地囤积知识；
-- 让 **学习反过来修正 idea**，而不是让想法停留在未经检验的直觉里。
-
-它关注的不是“记住了什么”，而是：
-
-> **你的原始想法，如何通过研究逐步变成更清楚、更可靠、更接近现实与现有工作的方案。**
+This repository works best when you use it with a **CLI code agent** that can read and edit the repo directly. 🤖
 
 ---
 
-## 🧭 这套框架在做什么
+## 🚀 How to use
 
-这个仓库服务的是一个持续循环，而不是一次性的记录动作：
+### Recommended setup
+
+The intended usage is:
+
+- keep this repository locally;
+- work with a **CLI code agent** (for example, Codex CLI, Claude Code, or a comparable local agent);
+- let the agent help you structure ideas, intake sources, study materials, and update the repository.
+
+Why CLI agents?
+Because this workflow is file-native. The agent should be able to:
+
+- read your current `problems`, `concepts`, and `sources`;
+- write new notes and cross-links back into the repo;
+- keep raw sources, derived notes, and problem spaces in one continuous loop.
+
+### Recommended loop
+
+1. Start from a question, intuition, or half-formed idea.
+2. Use `brainstorming` to turn it into a clearer problem framing.
+3. Use `research-intake` to find and bring in relevant sources.
+4. Use `source-study` to deeply study one source and repair the graph around it.
+5. Promote only durable insights into `concepts` or `problems`.
+6. Let new questions and `idea_seeds` drive the next research cycle.
+
+In other words, don’t use this repo as passive storage.
+Use it as a working loop for **idea -> research -> alignment -> synthesis -> next idea**.
+
+---
+
+## 💡 Why ideas and learning need to stay together
+
+A knowledge system by itself is often not enough.
+You can collect papers, notes, summaries, and references for months without actually advancing the question that matters to you.
+
+An idea system by itself is also not enough.
+You can collect intuitions, hypotheses, and possible directions, but without sustained learning and external correction, those ideas often remain subjective and under-tested.
+
+That creates two common failure modes:
+
+- **Knowledge without direction**: you learn a lot, but your learning does not really move your own inquiry forward. 📚
+- **Ideas without correction**: you imagine a lot, but you do not know where those ideas stand relative to existing work. 🤔
+
+`idea-wiki` exists to connect those two halves:
+
+- let **ideas drive learning**, instead of collecting knowledge without a live question;
+- let **learning correct ideas**, instead of leaving them at the level of personal intuition.
+
+The real goal is not “remembering more.”
+The goal is:
+
+> **to make your original ideas progressively clearer, better grounded, and better aligned with reality and existing work.**
+
+---
+
+## 🧭 What this workflow does
+
+This repository is built around a repeating loop, not a one-off note-taking action:
 
 ```text
 idea -> structure -> research -> alignment -> synthesis -> new idea
 ```
 
-你可以把它理解成下面这条研究工作流：
+Each stage does something distinct:
 
 1. **idea**  
-   人先提出一个问题、直觉、猜想、方向感，哪怕它还很模糊。
+   Start with a question, intuition, hunch, or direction—even if it is still vague.
 
 2. **structure**  
-   先把这个模糊想法整理成一个可讨论、可研究的问题空间：它到底在问什么？缺什么？与哪些方向有关？
+   Turn that vague thought into something discussable and researchable: what is the actual question, what is missing, and what kind of problem space is this?
 
 3. **research**  
-   再引入已有工作、论文、案例、经验材料，让这个想法不只是停留在主观感觉上。
+   Bring in papers, cases, examples, and external material so the idea is no longer only private intuition.
 
 4. **alignment**  
-   把“我脑子里的表达”与“现有研究真正如何表述这个问题”对齐。这里往往能看见很多偏差、空白和错位。
+   Compare “how I currently think about this” with “how existing work actually frames this.” This is where gaps, mismatches, and blind spots become visible.
 
 5. **synthesis**  
-   当一些理解跨过单一来源、能稳定成立时，再把它沉淀成概念、问题空间、知识关系。
+   Once an understanding survives beyond one source, promote it into concepts, problem pages, and reusable knowledge relationships.
 
 6. **new idea**  
-   沉淀不会让研究结束，反而会长出新的问题、新的方向、新一轮要验证的想法。
+   Good synthesis does not end the process. It produces sharper follow-up questions, new angles, and better next ideas.
 
-所以 `idea-wiki` 的重点不是“把资料塞进仓库”，而是：
+So the point of `idea-wiki` is not just to store information.
+It is:
 
-> **让一个人的想法，有机会进入研究；让研究结果，又能反过来改变这个人的想法。**
-
----
-
-## 🤖 AI 在这里扮演什么角色
-
-在这个框架里，AI 的作用不是“替你思考”，也不是简单地“替你总结资料”。
-
-更准确地说，它扮演的是一个 **研究对齐器（research aligner）**：
-
-- 帮你把模糊想法整理成可研究对象；
-- 帮你判断下一步该补哪些材料；
-- 帮你把个人直觉映射到更稳定的研究语言里；
-- 帮你发现你以为自己在问的问题，和学界真正讨论的问题之间的差距。🧠
-
-这件事很重要，因为很多研究推进的障碍，并不是“没看够论文”，而是：
-
-- 想法没有被清楚表达；
-- 调研没有围绕真正的问题展开；
-- 个人语言和现有工作语言彼此错位；
-- 看了很多材料，却没有回到自己的问题上。
-
-AI 在这里的价值，是帮助你在这些断裂之间搭桥，而不是代替你形成最终判断。
+> **to give a person’s ideas a path into research, and give research a path back into the person’s thinking.**
 
 ---
 
-## 🧱 这个仓库如何承载这个闭环
+## 🤖 What AI is doing here
 
-这个仓库的结构不是为了分类而分类，而是为了让上面的工作流有稳定落点。
+In this framework, AI is not supposed to replace judgment.
+And it is not just a generic summarizer.
+
+Its more useful role is as a **research aligner**:
+
+- it helps turn vague ideas into researchable objects;
+- it helps identify what knowledge is missing next;
+- it helps map private language into more stable research language;
+- it helps expose the gap between what you think you are asking and what the field is actually discussing. 🧠
+
+A lot of research friction does not come from “not reading enough.”
+It comes from:
+
+- asking an unclear question,
+- researching in a diffuse way,
+- using private language that does not match the literature,
+- and failing to route new material back into the original problem.
+
+AI is most useful here when it helps bridge those breaks.
+Not when it pretends to think for you.
+
+---
+
+## 🧱 How this repository holds the loop
+
+The directory structure exists to support that workflow, not just to classify files.
 
 ### `raw/`
-保存原始材料本体。  
-这里的原则是：**原始输入尽量保持不被污染**。你后续的理解、摘要、概念化，都不应该反写回原文层。
+This is the raw input layer.
+Original materials live here and should stay as unpolluted as possible.
+Your later summaries, interpretations, and concepts should not overwrite the source layer.
 
 ### `wiki/sources/`
-这里存放来源笔记（source notes）。  
-它们不是“复制原文”，而是把一份材料转成可复用的研究节点：摘要、关键论点、局部想法、与其它页面的关系都应该在这里变得清楚。
+These are source notes.
+They turn a source into a reusable research node: summary, claims, local thoughts, and explainable links to the wider graph.
 
 ### `wiki/concepts/`
-这里沉淀的是已经跨过单一来源、具有更稳定意义的概念。  
-如果某个理解只在某篇材料里成立，它不应该过早被提升到这里。
+These are durable concepts.
+A concept belongs here only when it holds beyond a single source and becomes reusable in the wider system.
 
 ### `wiki/problems/`
-这是这个仓库最核心的一层之一。  
-这里不是任务清单，而是 **问题空间 / idea space**：
+This is one of the most important layers.
+These pages are not task lists—they are **problem spaces / idea spaces**:
 
-- 你当前真正关心的长期问题是什么；
-- 你还缺哪些知识；
-- 这个方向正在长出哪些 `idea_seeds`；
-- 下一步应该读什么，才能让问题更清楚。
+- what long-running question actually matters,
+- what knowledge is still missing,
+- what `idea_seeds` are emerging,
+- what should be read next to sharpen the picture.
 
-换句话说，这里承载的是：**想法如何驱动学习，学习如何回流到想法。**
+This is where the system keeps the connection between inquiry and learning alive.
 
 ### `skills/`
-这里放的是配合这套闭环使用的技能，而不是独立小工具。  
-它们的作用是帮助你进入不同环节，而不是打断这个流程。
+These are not random utilities.
+They are workflow entry points that help you move through different stages of the loop.
 
 ---
 
-## 🛠️ 内置技能
+## 🛠️ Bundled skills
 
-当前仓库内置了三个技能：
+This repository currently bundles three skills:
 
 ### `brainstorming`
-用于在真正动手之前，先把一个模糊方向梳理成更清楚的设计与问题定义。  
-它对应的是从 **idea** 进入 **structure** 的环节。
+Use it before implementation or before prematurely locking into a solution.
+It helps transform a vague direction into a clearer design or problem framing.
 
 ### `research-intake`
-用于从一个问题或想法出发，筛选候选材料、引入高价值来源，并把它们带入仓库。  
-它对应的是从 **structure** 进入 **research** 的环节。 🔎
+Use it when you have a question or idea but still need to bring in external material.
+It handles candidate screening, intake discipline, and source acquisition. 🔎
 
 ### `source-study`
-用于围绕一个本地来源做深度学习、讨论和关系修复。  
-它对应的是从 **research** 进入 **alignment / synthesis** 的环节。
+Use it when one local source deserves deeper attention.
+It helps study that source, update the note, and repair the surrounding graph conservatively.
 
-这三个技能拼在一起，构成的不是“自动化流水线”，而是一套更可控的研究辅助结构。
-
----
-
-## 🚫 这不是什么
-
-为了避免误解，`idea-wiki` **不是**：
-
-- 一个传统笔记仓库；
-- 一个任务管理器；
-- 一个“把所有资料都收进来”的大档案馆；
-- 一个让 AI 替你完成判断的自动研究系统。
-
-它更像是一种研究工作方式：
-
-> **把人的问题意识、AI 的整理能力、外部知识的校正作用，以及长期沉淀的结构，放进同一个系统里。**
+Together, these skills support the workflow rather than replacing it.
 
 ---
 
-## 🚀 如何开始
+## 🚫 What this is not
 
-你不需要先准备完整体系，可以直接从一个很小的起点开始：
+To avoid confusion, `idea-wiki` is **not**:
 
-1. 先写下一个你真正关心的想法、疑问或方向；
-2. 用 `brainstorming` 把它整理成更清楚的问题空间；
-3. 用 `research-intake` 找到并引入相关材料；
-4. 用 `source-study` 深挖关键来源；
-5. 把稳定理解沉淀进 `concepts`，把长期问题和 `idea_seeds` 放进 `problems`；
-6. 再从这些沉淀里长出下一轮 idea。
+- a generic note archive;
+- a task manager;
+- a “save every source” dumping ground;
+- an autonomous system where AI is supposed to make final judgments for you.
 
-如果这套循环运转起来，最终得到的就不只是一个资料仓库，而是一个会持续推进你认知的研究系统。✨
+It is better understood as a research operating style:
+
+> **a way to keep personal ideas, AI-assisted structuring, external knowledge, and long-term synthesis inside one coherent loop.**
+
+---
+
+## 📚 Repository quick map
+
+- `raw/` — immutable raw materials plus registry
+- `wiki/sources/` — source notes
+- `wiki/concepts/` — durable synthesis
+- `wiki/problems/` — long-running problem spaces with `idea_seeds`
+- `skills/` — workflow skills for brainstorming, intake, and study
+
+---
+
+## 🙌 Inspiration
+
+This project is **inspired by Andrej Karpathy’s `llm_wiki`**.
+
+The difference is that `idea-wiki` tries to push the pattern one step further:
+not only organizing knowledge, but also explicitly organizing **ideas**, **problem spaces**, and the alignment process between a person’s private intuition and the field’s existing understanding.
+
+In that sense, you can think of it as an idea-augmented extension of the original `llm_wiki` direction.
 
 ---
 
 ## License
 
-本仓库基于 **MIT License** 发布。
+This repository is released under the **MIT License**.
